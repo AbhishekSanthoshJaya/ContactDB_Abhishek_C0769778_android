@@ -83,7 +83,5 @@ public class AddContactActivity extends AppCompatActivity {
             phone.setText( editPerson.getPhone() );
             email.setText(editPerson.getEmail());
         }
-
-
     }
 }
