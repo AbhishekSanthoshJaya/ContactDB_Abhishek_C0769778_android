@@ -1,7 +1,9 @@
 package com.aby.contactdb_abhishek_c0769778_android.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,13 +36,24 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(fname.getText().toString().isEmpty() || address.getText().toString().isEmpty() || phone.getText().toString().isEmpty())
+                {
+                    new AlertDialog.Builder(AddContactActivity.this)
+                            .setTitle("Fields missing")
+                            .setMessage("First Name, Number and Address are required")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton(android.R.string.yes, null)
+                            .show();
+                    return;
+                }
                 String fnameString = fname.getText().toString();
                 String lnameString = lname.getText().toString();
                 String addressString = address.getText().toString();
                 String phoneString = phone.getText().toString();
                 String emailString = email.getText().toString();
                 ContactDB personDB = ContactDB.getInstance( v.getContext() );
-
 
                 if (editPerson != null)
                 {
