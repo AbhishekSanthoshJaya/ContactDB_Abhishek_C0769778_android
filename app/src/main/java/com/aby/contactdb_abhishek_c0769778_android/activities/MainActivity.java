@@ -46,7 +46,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Integer countnew) {
                 countvalue[0] = countnew;
-                count.setText( countnew.toString() );
+                if(countnew == 1)
+                {
+                    count.setText( countnew.toString() + " contact");
+                }
+                else
+                {
+                    count.setText(countnew.toString() + " contacts");
+                }
+
             }
         } );
 

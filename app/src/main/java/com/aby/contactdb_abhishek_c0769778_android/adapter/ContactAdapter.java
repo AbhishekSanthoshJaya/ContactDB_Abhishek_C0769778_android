@@ -114,7 +114,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         Contact person = personsList.get(position);
         ContactDB userDatabase = ContactDB.getInstance(getContext());
         userDatabase.daoObject().delete(person);
-        Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(),"Contact Deleted",Toast.LENGTH_SHORT).show();
         personsList.remove(position);
         notifyDataSetChanged();
 
