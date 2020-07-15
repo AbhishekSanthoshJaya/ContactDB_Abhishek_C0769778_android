@@ -14,11 +14,11 @@ import java.util.List;
 public interface ContactDao {
 
     @Insert
-    void insert(Contact person);
+    void insert(Contact contact);
     @Delete
-    void delete(Contact person);
+    void delete(Contact contact);
     @Update
-    void update(Contact person);
+    void update(Contact contact);
     @Query("SELECT count(id) from contact")
     Integer count();
     @Query("SELECT count(id) from contact")

@@ -59,17 +59,6 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         holder.name.setText(currPerson.getFirstname() + " " + currPerson.getLastname());
         holder.address.setText( currPerson.getAddress() );
         holder.phone.setText( currPerson.getPhone() );
-
-        holder.mycardview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(getContext(), UpdateContactActivity.class);
-//                intent.putExtra("data",personsList.get(position));
-//                context.startActivity(intent);
-
-            }
-        });
-
         holder.deletePerson.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,10 +71,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
             public void onClick(View view) {
 
                 Intent myintent = new Intent(context, AddContactActivity.class);
-                myintent.putExtra("person", currPerson);
-
+                myintent.putExtra("contact", currPerson);
                 context.startActivity(myintent);
-                //  Toast.makeText(context,"position = "+position,Toast.LENGTH_LONG).show();
 
             }
         });
@@ -126,7 +113,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
     public void deleteItem(int position) {
         Contact person = personsList.get(position);
         ContactDB userDatabase = ContactDB.getInstance(getContext());
-        userDatabase.daoObjct().delete(person);
+        userDatabase.daoObject().delete(person);
         Toast.makeText(getContext(),"Deleted",Toast.LENGTH_SHORT).show();
         personsList.remove(position);
         notifyDataSetChanged();

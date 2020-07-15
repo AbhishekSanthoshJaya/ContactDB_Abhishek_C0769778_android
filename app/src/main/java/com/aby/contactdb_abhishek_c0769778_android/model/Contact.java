@@ -34,12 +34,16 @@ public class Contact implements Parcelable {
     @Expose
     private String phone;
 
+    @SerializedName("email")
+    @Expose
+    private String email;
 
-    public Contact(String firstname, String lastname, String address, String phone) {
+    public Contact(String firstname, String lastname, String address, String phone, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
         this.phone = phone;
+        this.email = email;
     }
 
     protected Contact(Parcel in) {
@@ -52,6 +56,7 @@ public class Contact implements Parcelable {
         lastname = in.readString();
         address = in.readString();
         phone = in.readString();
+        email = in.readString();
     }
 
     @Override
@@ -62,10 +67,11 @@ public class Contact implements Parcelable {
             dest.writeByte( (byte) 1 );
             dest.writeInt( id );
         }
-        dest.writeString( firstname );
-        dest.writeString( lastname );
-        dest.writeString( address );
-        dest.writeString( phone );
+        dest.writeString(firstname);
+        dest.writeString(lastname);
+        dest.writeString(address);
+        dest.writeString(phone);
+        dest.writeString(email);
     }
 
     @Override
@@ -85,27 +91,41 @@ public class Contact implements Parcelable {
         }
     };
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Integer getId() {
+
         return id;
     }
 
     public void setId(Integer id) {
+
         this.id = id;
     }
 
     public String getFirstname() {
+
         return firstname;
     }
 
     public void setFirstname(String firstname) {
+
         this.firstname = firstname;
     }
 
     public String getLastname() {
+
         return lastname;
     }
 
     public void setLastname(String lastname) {
+
         this.lastname = lastname;
     }
 

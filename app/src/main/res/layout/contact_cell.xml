@@ -46,7 +46,6 @@
                         android:layout_height="50dp"
                         android:layout_gravity="center_vertical"
                         android:layout_margin="5dp"
-                        android:src="@drawable/ic_action_person"
                         app:srcCompat="@drawable/addcontact" />
 
                 </LinearLayout>
@@ -118,7 +117,6 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="5dp"
-                        android:src="@drawable/ic_action_delete"
                         android:visibility="visible"
                         app:srcCompat="@android:drawable/ic_menu_delete"></ImageView>
                 </LinearLayout>
