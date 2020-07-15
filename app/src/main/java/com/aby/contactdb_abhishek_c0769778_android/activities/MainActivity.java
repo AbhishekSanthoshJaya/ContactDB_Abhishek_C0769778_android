@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Integer[] countvalue = {contactDb.daoObject().count()};
 
+        //Getting contact count from db and displaying
         contactDb.daoObject().countLive().observe( this, new Observer<Integer>() {
             @Override
             public void onChanged(@Nullable Integer countnew) {
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         count.setText( countvalue[0].toString());
 
+        //Moving to contact addition activity
         addPerson = findViewById( R.id.add_person );
         addPerson.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -70,10 +72,8 @@ public class MainActivity extends AppCompatActivity {
         } );
 
 
-
         RecyclerView recyclerView = findViewById(R.id.recyclerPerson);
         contactAdapter = new ContactAdapter(this);
-
 
         contactArrayList = contactDb.daoObject().getDefault();
 
@@ -81,23 +81,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Contact> personlist) {
                 contactArrayList = personlist;
-
                 contactAdapter.setPersonsList(personlist);
                 contactAdapter.notifyDataSetChanged();
 
             }
         } );
-
         contactAdapter.setPersonsList(contactArrayList);
         recyclerView.setAdapter(contactAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         contactAdapter.notifyDataSetChanged();
 
-
         search = findViewById(R.id.editSearch );
 
-
+        //Filtering contacts
         search.addTextChangedListener( new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -115,8 +112,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         } );
-
-
     }
 
     private void filter(String s) {
@@ -127,16 +122,11 @@ public class MainActivity extends AppCompatActivity {
                     || contact.getLastname().toLowerCase().contains( s.toLowerCase() )
                     || contact.getAddress().toLowerCase().contains( s.toLowerCase() )
                     || contact.getPhone().toLowerCase().contains( s.toLowerCase() )
-
             )
             {
                 filteredList.add( contact );
             }
         }
         contactAdapter.filterList(filteredList);
-
-
-
-
     }
 }
